@@ -1,0 +1,1 @@
+In This Folder We Add Those Files Which We Want to Render by .ejs or .pug 
