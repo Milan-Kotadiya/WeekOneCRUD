@@ -15,6 +15,9 @@ const Create = require('./Routes/Create')
 const Update = require('./Routes/Update')
 const Delete = require('./Routes/Delete')
 
+const Render = require('./Routes/Render')
+const RenderPug = require('./Routes/RenderPug')
+
 app.use(express.json())
 
 app.get('/', (req,resp)=>{
@@ -27,8 +30,18 @@ app.use('/update',UpdateMiddle, Update);
 app.use('/delete',Delete);
 
 
-
+//Renderfile
+//Normal way
+app.get('/normal',(req,resp)=>{
+    resp.sendFile(__dirname+'/views/index.html');
+    console.log('Normal Way File Rendered');
+})
+//EJS
+app.set('view engine','ejs');
+app.use('/ejs',Render);
+//PUG
+app.set('view engine','pug');
+app.use('/pug',RenderPug);
 
 
 app.listen(port,()=>{console.log(`App is Listening On ${port}`)});
-

@@ -3,8 +3,7 @@ const router = express.Router();
 
 
 router.get('/', async (req,resp)=>{
-
-    resp.render('index.ejs');
-    console.log('EJS Way File Rendered');
+    resp.render('index');
+    console.log('PUG File Rendered');
 });
 module.exports = router;
