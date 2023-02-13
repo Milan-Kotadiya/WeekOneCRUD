@@ -20,7 +20,7 @@ module.exports = function(app){
 //Renderfile
     //Normal way
     app.get('/normal',(req,resp)=>{
-    resp.sendFile(__dirname+'/views/index.html');
+    resp.sendFile('C:/Users/milan.kotadiya/Desktop/Milan/crudop/views/index.html');
     console.log('Normal Way File Rendered');
 });
     //EJS

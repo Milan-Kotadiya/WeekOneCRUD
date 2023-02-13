@@ -5,23 +5,13 @@ dotenv.config();
 const port = process.env.PORT || 3000;
 const app = express()
 
-
-
-// Catch Unhandle Rejection
-process.on('unhandledRejection',(error)=>{
-    //we can use winston for register in log
-    console.log('We Got unhandledRejection',error)
-});
-// Catch Uncaught Exception
-process.on('uncaughtException',(error)=>{
-    console.log('We Got uncaughtException',error)
-});
-
+// Here All Error will imported = Handling and Logging Errors
+const Errors = require('./Middleware/Errors')();
 
 app.use(express.json())
 const Routes = require('./RouteuseIndex/RouteExtract')(app); //Here we Pass All Routes
 
-app.get('/', (req,resp)=>{
+app.get('/',(req,resp)=>{
         resp.send('Express App Started Succesfully');
         resp.end();
 });
