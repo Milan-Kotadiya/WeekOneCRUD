@@ -24,9 +24,20 @@ router.put('/:id', async (req,resp)=>{
         if (typeof req.body.mobileno !== 'number') {errors.mobileno.push('mobileno Should be in Digits');}
         if ((req.body.mobileno).toString().length !== 10) {errors.mobileno.push('Mobile Number Should be 10 Digits');}
 
-    if(req.body.email && typeof req.body.email == 'string'){data['email'] =req.body.email;};
+
+    const validateEmail = (email) => {
+        return String(email)
+          .toLowerCase()
+          .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          );
+      };
+      const emailpattern = validateEmail(req.body.email)
+
+    if(req.body.email && typeof req.body.email == 'string' && emailpattern ){data['email'] =req.body.email;};
         if (!req.body.email) {errors.email.push('email not found');};
         if (typeof req.body.email !== 'string') {errors.email.push('email Should be in string');};
+        if (!emailpattern) {errors.email.push('invalid email pattern');};
 
     if(req.body.password && typeof req.body.password == 'string'){data['password'] =req.body.password;};
         if (!req.body.password) {errors.password.push('password not found');};
