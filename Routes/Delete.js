@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Users = require('../Database/Users');
 
+const DeleteJwt = require('../Middleware/JWT');
 
 router.delete('/', async (req,resp)=>{
     try{
@@ -18,7 +19,7 @@ router.delete('/', async (req,resp)=>{
         resp.status(500).send('Delete api crashed')
     }
 });
-router.delete('/:id', async (req,resp)=>{
+router.delete('/:id',DeleteJwt, async (req,resp)=>{
     try{
         const Delete = await Users.deleteOne({_id:req.params.id})
         console.log('Delete Api Worked Succesfully');

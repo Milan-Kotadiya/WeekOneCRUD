@@ -4,6 +4,7 @@ const Read = require('../Routes/Read')
 const Create = require('../Routes/Create')
 const Update = require('../Routes/Update')
 const Delete = require('../Routes/Delete')
+const Createpost = require('../Routes/Createpost')
 
 const Render = require('../Routes/Render')
 const RenderPug = require('../Routes/RenderPug')
@@ -16,6 +17,7 @@ module.exports = function(app){
     app.use('/read', Read);
     app.use('/update',UpdateMiddle, Update);
     app.use('/delete',Delete);
+    app.use('/posts',Createpost);
 
 //Renderfile
     //Normal way

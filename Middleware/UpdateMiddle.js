@@ -5,7 +5,6 @@ function UpdateMiddle(req,resp,next) {
     }
  catch(error){
     console.log('Middleware Api Crashed');
-    next();
  }
 }
 
